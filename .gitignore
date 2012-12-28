@@ -2,3 +2,7 @@
 *~
 /auto-save-list/
 /el-get/
+/elpa/
+/.smex-items
+places
+ac-comphist.dat
