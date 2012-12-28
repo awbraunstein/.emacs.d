@@ -1,3 +1,7 @@
+;; init.el
+;; Andrew Braunstein's emacs config
+;; Based on el-get
+
 ;;For Starter Kit
 (require 'package)
 (add-to-list 'package-archives
@@ -97,6 +101,9 @@
 ;; Newline and indent everywhere
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;;Set C-c c to compile
+(global-set-key (kbd "C-c c") 'compile)
+
 ;; Reindent on yank
 ;; http://emacswiki.org/emacs/AutoIndentation
 (dolist (command '(yank yank-pop))
@@ -189,12 +196,13 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'haskell-custom-setup)
+
 ;;(setq haskell-stylish-on-save t)
 
 ;;Watch for haskell mode inheriting from prog-mode
 ;;Then we won't need to do this.
 (add-hook 'haskell-mode-hook 'auto-fill-mode)
-(add-hook 'haskell-mode-hook 'fci-mode)
+;;(add-hook 'haskell-mode-hook 'fci-mode)
 
 (global-set-key "\C-xar" 'align-regexp)
 
