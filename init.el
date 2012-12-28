@@ -210,9 +210,6 @@
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5" "eco" "jeco"))
 (multi-web-global-mode 1)
 
-;; Haskell latex for lhs2tex
-(require 'haskell-latex)
-
 ;; Wrap region
 (wrap-region-mode t)
 (wrap-region-global-mode t)
