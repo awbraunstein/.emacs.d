@@ -1,4 +1,14 @@
-((auctex status "installed" recipe
+((ProofGeneral status "installed" recipe
+               (:name ProofGeneral :website "http://proofgeneral.inf.ed.ac.uk/" :description "Proof General is a generic front-end for proof assistants (also known as interactive theorem provers)" :type http-tar :options
+                      ("xzf")
+                      :url "http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-4.2.tgz" :build
+                      ("cd ProofGeneral && make clean" "cd ProofGeneral && make compile")
+                      :build/darwin
+                      `("cd ProofGeneral && make clean" ,(concat "cd ProofGeneral && make compile EMACS=" el-get-emacs))
+                      :load
+                      ("ProofGeneral/generic/proof-site.el")
+                      :info "./ProofGeneral/doc/"))
+ (auctex status "installed" recipe
          (:name auctex :website "http://www.gnu.org/software/auctex/" :description "AUCTeX is an extensible package for writing and formatting TeX files in GNU Emacs and XEmacs. It supports many different TeX macro packages, including AMS-TeX, LaTeX, Texinfo, ConTeXt, and docTeX (dtx files)." :type cvs :module "auctex" :url ":pserver:anonymous@cvs.sv.gnu.org:/sources/auctex" :build
                 `(("./autogen.sh")
                   ("./configure" "--without-texmf-dir" "--with-lispdir=`pwd`" ,(concat "--with-emacs=" el-get-emacs))
