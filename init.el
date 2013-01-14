@@ -2,7 +2,7 @@
 ;; Andrew Braunstein's emacs config
 ;; Based on el-get
 
-;;For Starter Kit
+;; For Starter Kit
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -54,7 +54,7 @@
 
 (el-get 'sync)
 
-;;Smex... For better M-x completions
+;; Smex... For better M-x completions
 (require 'smex)
 (setq smex-history-length 100)
 (smex-initialize)
@@ -64,7 +64,7 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;;Better buffer mode
+;; Better buffer mode
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Scroll to end of window before error
@@ -74,7 +74,7 @@
 (add-to-list 'ido-ubiquitous-command-exceptions 'man)
 (add-to-list 'ido-ubiquitous-command-exceptions 'w3m-goto-url)
 
-;;ignore .DS_Store in ido
+;; ignore .DS_Store in ido
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
 ;; Buffer movement by arrow keys
@@ -83,10 +83,10 @@
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-;;Magit
+;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;Automatically revert file if it changed on disk and we have no unsaved changes
+;; Automatically revert file if it changed on disk and we have no unsaved changes
 (global-auto-revert-mode t)
 
 (setq custom-file "~/.emacs.d/customize.el")
@@ -101,7 +101,7 @@
 ;; Newline and indent everywhere
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;;Set C-c c to compile
+;;nSet C-c c to compile
 (global-set-key (kbd "C-c c") 'compile)
 
 ;; Reindent on yank
@@ -129,20 +129,23 @@
     (kill-line arg)))
 (global-set-key "\C-k" 'kill-and-join-forward)
 
-;;Auto complete stuff
+;; Auto complete stuff
 (require 'pos-tip)
 (require 'auto-complete-config)
 (ac-config-default)
+
 ;; Needed for compatibility with flyspell
 (ac-flyspell-workaround)
 (setq ac-auto-start 3)
 (setq ac-auto-show-menu t)
 (setq ac-quick-help-delay .3)
 (ac-set-trigger-key "TAB")
+
 ;; Make \C-n and \C-p work in autocompletion menu
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+
 ;; Let's have snippets in the auto-complete dropdown
 (setq-default ac-sources '(ac-source-yasnippet
                            ac-source-abbrev
@@ -153,14 +156,13 @@
 ;; Immediately show what is happening for C- and M-
 (setq echo-keystrokes 0.1)
 
-;;Subword mode for navigating camelCase words
+;; Subword mode for navigating camelCase words
 (global-subword-mode 1)
 
-;;For smooth-scrolling
+;; For smooth-scrolling
 (setq smooth-scroll-margin 5)
 
-;;Haskell setup
-
+;; Haskell setup
 (defun haskell-custom-setup ()
   (progn
     (define-key haskell-mode-map (kbd "C-x C-s") 'haskell-mode-save-buffer)
@@ -223,6 +225,7 @@
 (wrap-region-global-mode t)
 
 ;; Enable GHC coding
+;; Adapted from Richard Eisenberg
 (setq ghc-location "/Users/awbraunstein/code/ghc") ;; change as necessary
 
 ;; search withing GHC compiler code
@@ -243,3 +246,6 @@
   (local-set-key (kbd "C-q") 'compile-ghc))
 
 (add-hook 'haskell-mode-hook 'set-compile-ghc)
+
+;; Jedi python
+(add-hook 'python-mode-hook 'jedi:setup)

@@ -31,6 +31,13 @@
                        (add-to-list 'auto-mode-alist
                                     '("Cakefile" . coffee-mode))
                        (setq coffee-js-mode 'javascript-mode))))
+ (ctable status "installed" recipe
+         (:name ctable :description "Table Component for elisp" :type github :pkgname "kiwanami/emacs-ctable"))
+ (deferred status "installed" recipe
+   (:name deferred :description "Simple asynchronous functions for emacs lisp" :website "https://github.com/kiwanami/emacs-deferred" :type github :pkgname "kiwanami/emacs-deferred" :features "deferred"))
+ (epc status "installed" recipe
+      (:name epc :description "An RPC stack for Emacs Lisp" :type github :pkgname "kiwanami/emacs-epc" :depends
+             (deferred ctable)))
  (expand-region status "installed" recipe
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (flymake-cursor status "installed" recipe
@@ -58,6 +65,11 @@
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
  (inf-ruby status "installed" recipe
            (:name inf-ruby :type http :description "Inferior Ruby Mode - ruby process in a buffer." :url "http://bugs.ruby-lang.org/projects/ruby-trunk/repository/raw/misc/inf-ruby.el"))
+ (jedi status "installed" recipe
+       (:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :build
+              (("make" "requirements"))
+              :depends
+              (epc auto-complete)))
  (logito status "installed" recipe
          (:name logito :type github :pkgname "sigma/logito" :description "logging library for Emacs" :website "http://github.com/sigma/logito"))
  (markdown-mode status "installed" recipe
