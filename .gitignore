@@ -1,8 +1,11 @@
 *.elc
 *~
-/auto-save-list/
-/el-get/
-/elpa/
-/.smex-items
+auto-save-list/
+elpa/
+eshell/
 places
 ac-comphist.dat
+recentf
+savehist
+ido.last
+projectile-bookmarks.eld

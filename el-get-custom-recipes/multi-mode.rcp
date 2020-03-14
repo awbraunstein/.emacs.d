@@ -1,4 +1,0 @@
-(:name multi-mode
-       :description "A multi major mode for emacs"
-       :type http
-       :url "http://www.loveshack.ukfsn.org/emacs/multi-mode.el")
